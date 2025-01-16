@@ -1,6 +1,6 @@
 # GGT-Game1
  Game for GDG Club
- by Dinesh,
+ by dinesh,
     Mirudhula,
     Deepa
     and Viswasurya
