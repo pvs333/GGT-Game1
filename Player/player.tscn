@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://dn4nseicomjsr"]
+[gd_scene load_steps=4 format=3 uid="uid://dn4nseicomjsr"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_ga6sb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfy0t"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_v1xs5"]
+
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ga6sb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_wfy0t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 5.96046e-08)
+scale = Vector2(18, 28)
+texture = SubResource("PlaceholderTexture2D_v1xs5")

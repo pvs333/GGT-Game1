@@ -1,5 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1737090506
-icon.svg::CompressedTexture2D::629818896676192941::1737031468::1737090508::1::::<><>::
-README.md::TextFile::-1::1737035406::0::1::::<><>::
-world.tscn::PackedScene::6490295621171109066::1737035406::0::1::::<><>::uid://i8da4e41xmd6::::res://icon.svg
+::res://::1737092230
+icon.svg::CompressedTexture2D::629818896676192941::1737037231::1737092122::1::::<><>::
+README.md::TextFile::-1::1737091070::0::1::::<><>::
+world.tscn::PackedScene::6490295621171109066::1737092209::0::1::::<><>::
+::res://Environments/::1737092230
+::res://Player/::1737037976
+player.tscn::PackedScene::8132405660999607961::1737037976::0::1::::<><>::
