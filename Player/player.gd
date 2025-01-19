@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+@onready var muzzle: Marker2D = $Muzzle
+@onready var gun: Node2D = $Gun
+
+
+
 const GRAVITY : float = 1000.0
 const JUMP_VELOCITY : float = -600.0
 const RUN_VELOCITY : float = 150.0
@@ -51,5 +56,9 @@ func perform_state_actions(delta): #add animations in here
 				pass
 		PLAYER_STATE.RUN:
 			#add run animation
+			if(direction == 1):
+				gun.rotation_degrees = 0
+			else:
+				gun.rotation_degrees = 180
 			velocity.x = direction * RUN_VELOCITY
 			
