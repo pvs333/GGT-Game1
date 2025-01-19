@@ -3,21 +3,21 @@
 [ext_resource type="Script" path="res://Player/player.gd" id="1_ga6sb"]
 [ext_resource type="PackedScene" uid="uid://buyw5b436blvx" path="res://Player/gun.tscn" id="2_vmwaj"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_v1xs5"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfy0t"]
 radius = 28.0
 height = 88.0
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_v1xs5"]
-
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ga6sb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_wfy0t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 5.96046e-08)
 scale = Vector2(58, 90.6825)
 texture = SubResource("PlaceholderTexture2D_v1xs5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_wfy0t")
 
 [node name="Gun" parent="." instance=ExtResource("2_vmwaj")]

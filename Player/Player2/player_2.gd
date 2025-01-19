@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 #Node references
-@onready var gun: Node2D = $Gun
+@onready var gun_2: Node2D = $gun_2
 
 #constants
 const GRAVITY : float = 1000.0
@@ -30,11 +30,11 @@ func _physics_process(delta):
 	
 func handle_state_transitions():
 	
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump2") and is_on_floor():
 		_state = PLAYER_STATE.JUMP
 		velocity.y = JUMP_VELOCITY
 
-	direction  = Input.get_axis("left","right")
+	direction  = Input.get_axis("left2","right2")
 	if direction != 0:
 		_state = PLAYER_STATE.RUN
 		
@@ -57,8 +57,8 @@ func perform_state_actions(delta): #add animations in here
 		PLAYER_STATE.RUN:
 			#add run animation
 			if(direction == 1):
-				gun.rotation_degrees = 0
+				gun_2.rotation_degrees = 0
 			else:
-				gun.rotation_degrees = 180
+				gun_2.rotation_degrees = 180
 			velocity.x = direction * RUN_VELOCITY
 			
