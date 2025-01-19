@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://crbmdi11qeent"]
+
+[ext_resource type="Script" path="res://Player/bullet.gd" id="1_w4jro"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_508hy"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_71hom"]
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_w4jro")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_508hy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.700188, 0.277154, 0.22299, 1)
+position = Vector2(1.19209e-07, 0)
+scale = Vector2(14.75, 12.25)
+texture = SubResource("PlaceholderTexture2D_71hom")
