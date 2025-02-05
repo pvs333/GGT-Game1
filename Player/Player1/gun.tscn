@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://buyw5b436blvx"]
 
-[ext_resource type="Script" path="res://Player/gun.gd" id="1_d6vnn"]
+[ext_resource type="Script" path="res://Player/Player1/gun.gd" id="1_g6git"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0voyv"]
 
 [node name="Gun" type="Node2D"]
-script = ExtResource("1_d6vnn")
+script = ExtResource("1_g6git")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.478431, 1, 1, 1)

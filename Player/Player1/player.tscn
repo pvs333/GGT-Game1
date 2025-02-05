@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dn4nseicomjsr"]
 
-[ext_resource type="Script" path="res://Player/player.gd" id="1_ga6sb"]
-[ext_resource type="PackedScene" uid="uid://buyw5b436blvx" path="res://Player/gun.tscn" id="2_vmwaj"]
+[ext_resource type="Script" path="res://Player/Player1/player.gd" id="1_ga6sb"]
+[ext_resource type="PackedScene" uid="uid://buyw5b436blvx" path="res://Player/Player1/gun.tscn" id="2_vmwaj"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_v1xs5"]
 
