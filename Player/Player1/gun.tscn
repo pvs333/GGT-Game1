@@ -13,4 +13,4 @@ scale = Vector2(34, 8)
 texture = SubResource("PlaceholderTexture2D_0voyv")
 
 [node name="muzzle" type="Marker2D" parent="."]
-position = Vector2(16, 0)
+position = Vector2(64, 0)

@@ -10,9 +10,11 @@ const RUN_VELOCITY : float = 150.0
 const MAX_FALL : float = 600.0
 
 
+
+
 enum PLAYER_STATE{IDLE, RUN, JUMP, HURT}  #for different actions and easy use of each state
 var _state : PLAYER_STATE = PLAYER_STATE.IDLE  
-
+var Health = 3
 #to decide which side the character is facing
 var direction
 
@@ -62,3 +64,14 @@ func perform_state_actions(delta): #add animations in here
 				gun.rotation_degrees = 180
 			velocity.x = direction * RUN_VELOCITY
 			
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Bullet"):
+		hit()
+		
+func hit():
+	if Health <= 0:
+		GameManager.loses()
+		queue_free()
+	else:
+		Health -= 1

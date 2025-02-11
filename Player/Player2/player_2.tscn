@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl7mx01irmgam"]
+[gd_scene load_steps=6 format=3 uid="uid://dl7mx01irmgam"]
 
 [ext_resource type="Script" path="res://Player/Player2/player_2.gd" id="1_hmmc6"]
 [ext_resource type="PackedScene" uid="uid://cw3rrsl0nv32t" path="res://Player/Player2/gun_2.tscn" id="2_cchmd"]
@@ -8,6 +8,10 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5ck2r"]
 radius = 33.0
 height = 90.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vx665"]
+radius = 24.0
+height = 98.0
 
 [node name="Player2" type="CharacterBody2D"]
 script = ExtResource("1_hmmc6")
@@ -22,3 +26,13 @@ texture = SubResource("PlaceholderTexture2D_5dtl4")
 shape = SubResource("CapsuleShape2D_5ck2r")
 
 [node name="gun_2" parent="." instance=ExtResource("2_cchmd")]
+position = Vector2(1, 0)
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(45, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-45, -17)
+shape = SubResource("CapsuleShape2D_vx665")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
