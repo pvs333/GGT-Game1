@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bnmoxb4af4061" path="res://Player/shot.png" id="2_5qu5l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_508hy"]
+radius = 5.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_71hom"]
 
@@ -22,4 +23,5 @@ texture = SubResource("PlaceholderTexture2D_71hom")
 
 [node name="Shot" type="Sprite2D" parent="."]
 texture_filter = 1
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_5qu5l")

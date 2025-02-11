@@ -1,25 +1,88 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyp7hrb5w4ln3"]
+[gd_scene load_steps=10 format=4 uid="uid://cyp7hrb5w4ln3"]
 
+[ext_resource type="Texture2D" uid="uid://d12jem7dt6rx2" path="res://Environments/Backgorund_tile.png" id="1_psr5t"]
 [ext_resource type="PackedScene" uid="uid://dn4nseicomjsr" path="res://Player/Player1/player.tscn" id="1_th3b6"]
 [ext_resource type="PackedScene" uid="uid://dl7mx01irmgam" path="res://Player/Player2/player_2.tscn" id="2_cpnmn"]
+[ext_resource type="Texture2D" uid="uid://ytucshsvidr8" path="res://Environments/tilemap-metal.png" id="5_6bb3p"]
+[ext_resource type="Texture2D" uid="uid://ddtsaofo3fmp1" path="res://pipe(1).png" id="5_vd2yt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61ymd"]
-size = Vector2(937, 40)
+size = Vector2(937, 46.0517)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j41um"]
+texture = ExtResource("5_6bb3p")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3q5i2"]
+texture = ExtResource("5_vd2yt")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_bwydm"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_j41um")
+sources/1 = SubResource("TileSetAtlasSource_3q5i2")
 
 [node name="world" type="Node2D"]
+
+[node name="BackgorundTile" type="Sprite2D" parent="."]
+position = Vector2(513, 347)
+scale = Vector2(2.52215, 2.31804)
+texture = ExtResource("1_psr5t")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(515, 536)
+position = Vector2(515, 519)
+shape = SubResource("RectangleShape2D_61ymd")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-165, 295)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(319, -195)
+rotation = 1.57659
+shape = SubResource("RectangleShape2D_61ymd")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(-165, 295)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(1027, -203)
+rotation = 1.57659
 shape = SubResource("RectangleShape2D_61ymd")
 
 [node name="Player" parent="." instance=ExtResource("1_th3b6")]
-position = Vector2(273, 197)
+position = Vector2(257, 228)
 
 [node name="Player2" parent="." instance=ExtResource("2_cpnmn")]
-position = Vector2(709, 204)
+position = Vector2(778, 418)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(516, 366)
 zoom = Vector2(1.75, 1.75)
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+tile_set = SubResource("TileSet_bwydm")
+format = 2
+
+[node name="Layer1" type="TileMapLayer" parent="TileMap"]
+use_parent_material = true
+position = Vector2(-191.333, -166.667)
+tile_map_data = PackedByteArray("AAAMAB8AAAAAAAAAAAANAB8AAAABAAAAAAAPAB8AAAADAAAAAAAQAB8AAAAAAAAAAAATAB8AAAADAAAAAAAUAB8AAAAAAAAAAAAVAB8AAAABAAAAAAAWAB8AAAACAAAAAAAXAB8AAAADAAAAAAAYAB8AAAAAAAAAAAAZAB8AAAABAAAAAAAaAB8AAAACAAAAAAAbAB8AAAADAAAAAAAcAB8AAAAAAAAAAAAdAB8AAAABAAAAAAAeAB8AAAACAAAAAAAiAB8AAAADAAAAAAAjAB8AAAABAAAAAAAkAB8AAAACAAAAAAAlAB8AAAADAAAAAAAmAB8AAAAAAAAAAAAnAB8AAAABAAAAAAAoAB8AAAACAAAAAAApAB8AAAADAAAAAAAqAB8AAAAAAAAAAAArAB8AAAABAAAAAAAsAB8AAAACAAAAAAAtAB8AAAADAAAAAAAuAB8AAAAAAAAAAAAvAB8AAAABAAAAAAAwAB8AAAACAAAAAAAxAB8AAAAAAAAAAAAyAB8AAAABAAAAAAAzAB8AAAACAAAAAAA0AB8AAAADAAAAAAA1AB8AAAAAAAAAAAA2AB8AAAABAAAAAAA3AB8AAAACAAAAAAA4AB8AAAADAAAAAAA5AB8AAAAAAAAAAAA6AB8AAAABAAAAAAA7AB8AAAACAAAAAAA8AB8AAAADAAAAAAAMACAAAAAAAAAAAAAMACEAAAAAAAAAAAANACEAAAABAAAAAAAOACEAAAACAAAAAAAPACEAAAADAAAAAAARACAAAAABAAAAAAASACAAAAACAAAAAAAQACEAAAAAAAAAAAARACEAAAABAAAAAAASACEAAAACAAAAAAATACEAAAADAAAAAAAVACAAAAABAAAAAAAWACAAAAACAAAAAAAXACAAAAADAAAAAAAUACEAAAAAAAAAAAAYACAAAAAAAAAAAAAZACAAAAABAAAAAAAaACAAAAACAAAAAAAbACAAAAADAAAAAAAZACEAAAABAAAAAAAaACEAAAACAAAAAAAbACEAAAADAAAAAAAcACAAAAAAAAAAAAAdACAAAAABAAAAAAAeACAAAAACAAAAAAAfACAAAAAAAAAAAAAcACEAAAAAAAAAAAAdACEAAAABAAAAAAAeACEAAAACAAAAAAAfACEAAAADAAAAAAAgACAAAAABAAAAAAAiACAAAAADAAAAAAAjACAAAAADAAAAAAAgACEAAAAAAAAAAAAhACEAAAABAAAAAAAiACEAAAACAAAAAAAjACEAAAADAAAAAAAkACAAAAAAAAAAAAAlACAAAAABAAAAAAAmACAAAAACAAAAAAAnACAAAAADAAAAAAAkACEAAAAAAAAAAAAlACEAAAABAAAAAAAmACEAAAACAAAAAAAnACEAAAADAAAAAAAoACAAAAAAAAAAAAApACAAAAABAAAAAAAqACAAAAACAAAAAAArACAAAAADAAAAAAAoACEAAAAAAAAAAAApACEAAAABAAAAAAAqACEAAAACAAAAAAArACEAAAADAAAAAAAsACAAAAAAAAAAAAAtACAAAAABAAAAAAAuACAAAAACAAAAAAAvACAAAAADAAAAAAAsACEAAAAAAAAAAAAtACEAAAABAAAAAAAuACEAAAACAAAAAAAvACEAAAADAAAAAAAwACAAAAAAAAAAAAAxACAAAAABAAAAAAAyACAAAAACAAAAAAAzACAAAAADAAAAAAAwACEAAAAAAAAAAAAxACEAAAABAAAAAAAyACEAAAACAAAAAAAzACEAAAADAAAAAAA0ACAAAAAAAAAAAAA1ACAAAAABAAAAAAA2ACAAAAACAAAAAAA3ACAAAAADAAAAAAA0ACEAAAAAAAAAAAA1ACEAAAABAAAAAAA2ACEAAAACAAAAAAA3ACEAAAADAAAAAAA4ACAAAAAAAAAAAAA5ACAAAAABAAAAAAA6ACAAAAACAAAAAAA7ACAAAAADAAAAAAA4ACEAAAAAAAAAAAA5ACEAAAABAAAAAAA6ACEAAAACAAAAAAA7ACEAAAADAAAAAAA8ACAAAAAAAAAAAAA8ACEAAAAAAAAAAAAQACAAAAAAAAAAAAAPACAAAAADAAAAAAAOACAAAAACAAAAAAANACAAAAABAAAAAAAOAB8AAAACAAAAAAARAB8AAAABAAAAAAASAB8AAAACAAAAAAATACAAAAADAAAAAAAUACAAAAAAAAAAAAAVACEAAAABAAAAAAAWACEAAAACAAAAAAAXACEAAAADAAAAAAAYACEAAAAAAAAAAAAfAB8AAAAAAAAAAAAgAB8AAAABAAAAAAAhAB8AAAACAAAAAAAhACAAAAACAAAAAAAYABwAAQAAAAAAAAAZABwAAQABAAAAAAAaABwAAQACAAAAAAAbABwAAQADAAAAAAAmABwAAQAAAAAAAAAnABwAAQABAAAAAAAoABwAAQACAAAAAAApABwAAQADAAAAAAAfABkAAQAAAAAAAAAgABkAAQABAAAAAAAhABkAAQACAAAAAAAiABkAAQADAAAAAAAXABYAAQAAAAAAAAAYABYAAQABAAAAAAAZABYAAQACAAAAAAAaABYAAQADAAAAAAAoABYAAQAAAAAAAAApABYAAQABAAAAAAAqABYAAQACAAAAAAArABYAAQACAAAAAAAsABYAAQADAAAAAAAbABYAAQADAAAAAAA=")
+tile_set = SubResource("TileSet_bwydm")

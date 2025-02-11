@@ -17,4 +17,4 @@ func _process(delta):
 		var bullet_instance = BULLET.instantiate()
 		get_tree().root.add_child(bullet_instance)
 		bullet_instance.global_position = muzzle.global_position
-		bullet_instance.rotation = rotation + randf_range(deg_to_rad(-2),deg_to_rad(2))
+		bullet_instance.rotation = rotation + randf_range(deg_to_rad(-1),deg_to_rad(1))

@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 #constants
 const GRAVITY : float = 1000.0
-const JUMP_VELOCITY : float = -600.0
+const JUMP_VELOCITY : float = -400.0
 const RUN_VELOCITY : float = 150.0
 const MAX_FALL : float = 600.0
 

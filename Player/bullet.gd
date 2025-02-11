@@ -1,10 +1,7 @@
 class_name Bullet
 extends Area2D
 
- 
- 
 const SPEED: int = 1500
- 
  
 func _process(delta):
 	position += transform.x * SPEED * delta
