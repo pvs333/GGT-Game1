@@ -1,22 +1,51 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl7mx01irmgam"]
+[gd_scene load_steps=10 format=3 uid="uid://dl7mx01irmgam"]
 
 [ext_resource type="Script" path="res://Player/Player2/player_2.gd" id="1_hmmc6"]
 [ext_resource type="PackedScene" uid="uid://cw3rrsl0nv32t" path="res://Player/Player2/gun_2.tscn" id="2_cchmd"]
+[ext_resource type="Texture2D" uid="uid://dttxe2q3r27bn" path="res://Player/player2.png" id="3_oe2cs"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5dtl4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5ck2r"]
-radius = 33.0
-height = 90.0
+radius = 9.0
+height = 26.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vx665"]
-radius = 24.0
-height = 98.0
+radius = 12.0
+height = 36.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oacjx"]
+atlas = ExtResource("3_oe2cs")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndi32"]
+atlas = ExtResource("3_oe2cs")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tbksp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oacjx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndi32")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
 
 [node name="Player2" type="CharacterBody2D"]
 script = ExtResource("1_hmmc6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 self_modulate = Color(0.848131, 0.78783, 0.146957, 1)
 position = Vector2(0, 2.38419e-07)
 scale = Vector2(68.018, 90)
@@ -26,13 +55,19 @@ texture = SubResource("PlaceholderTexture2D_5dtl4")
 shape = SubResource("CapsuleShape2D_5ck2r")
 
 [node name="gun_2" parent="." instance=ExtResource("2_cchmd")]
-position = Vector2(1, 0)
+position = Vector2(2, -8)
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(45, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-45, -17)
+position = Vector2(-46, -17)
+scale = Vector2(1.2, 1)
 shape = SubResource("CapsuleShape2D_vx665")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_tbksp")
+animation = &"run"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

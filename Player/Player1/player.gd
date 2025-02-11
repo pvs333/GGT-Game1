@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 #Node references
 @onready var gun: Node2D = $Gun
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 #constants
 const GRAVITY : float = 1000.0
@@ -47,7 +48,7 @@ func handle_state_transitions():
 func perform_state_actions(delta): #add animations in here 
 	match _state:
 		PLAYER_STATE.IDLE:
-			#play idle animation
+			animated_sprite_2d.play("idle")
 			velocity.x = move_toward(velocity.x,0,RUN_VELOCITY)
 		PLAYER_STATE.JUMP:
 			if velocity.y < 0:
@@ -57,21 +58,26 @@ func perform_state_actions(delta): #add animations in here
 				#add jump animation
 				pass
 		PLAYER_STATE.RUN:
-			#add run animation
+			animated_sprite_2d.play("run")
 			if(direction == 1):
 				gun.rotation_degrees = 0
+				animated_sprite_2d.flip_h = false
 			else:
 				gun.rotation_degrees = 180
+				animated_sprite_2d.flip_h = true
+				
 			velocity.x = direction * RUN_VELOCITY
 			
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Bullet"):
+		area.queue_free()
 		hit()
 		
 func hit():
+	Health -= 1
 	if Health <= 0:
-		GameManager.loses()
+		GameManager.loses(1)
 		queue_free()
-	else:
-		Health -= 1
+
+		

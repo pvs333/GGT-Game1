@@ -1,22 +1,51 @@
-[gd_scene load_steps=6 format=3 uid="uid://dn4nseicomjsr"]
+[gd_scene load_steps=10 format=3 uid="uid://dn4nseicomjsr"]
 
 [ext_resource type="Script" path="res://Player/Player1/player.gd" id="1_ga6sb"]
 [ext_resource type="PackedScene" uid="uid://buyw5b436blvx" path="res://Player/Player1/gun.tscn" id="2_vmwaj"]
+[ext_resource type="Texture2D" uid="uid://b645awq384ie0" path="res://Player/player1.png" id="3_kmya4"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_v1xs5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfy0t"]
-radius = 28.0
-height = 88.0
+radius = 6.0
+height = 26.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_40jyy"]
-radius = 24.0
-height = 106.0
+radius = 18.0
+height = 38.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46utg"]
+atlas = ExtResource("3_kmya4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqtn6"]
+atlas = ExtResource("3_kmya4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_air44"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46utg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqtn6")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ga6sb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, 5.96046e-08)
 scale = Vector2(58, 90.6825)
 texture = SubResource("PlaceholderTexture2D_v1xs5")
@@ -25,10 +54,16 @@ texture = SubResource("PlaceholderTexture2D_v1xs5")
 shape = SubResource("CapsuleShape2D_wfy0t")
 
 [node name="Gun" parent="." instance=ExtResource("2_vmwaj")]
+position = Vector2(3, -8)
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CapsuleShape2D_40jyy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_air44")
+animation = &"run"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

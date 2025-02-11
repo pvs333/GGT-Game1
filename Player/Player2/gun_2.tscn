@@ -9,7 +9,7 @@ script = ExtResource("1_am031")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.443137, 1, 1, 1)
-scale = Vector2(26.1855, 8)
+scale = Vector2(2.2255, 2.08)
 texture = SubResource("PlaceholderTexture2D_n6np0")
 
 [node name="muzzle" type="Marker2D" parent="."]
